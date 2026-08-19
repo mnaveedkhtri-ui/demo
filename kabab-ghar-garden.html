@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kabab Ghar Garden — Hyderabad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal: #16120E;
+    --charcoal-2: #201A14;
+    --charcoal-3: #2A2119;
+    --ember: #D5541A;
+    --ember-bright: #FF7A3D;
+    --brass: #C9A227;
+    --brass-soft: #E4C463;
+    --garden: #3A5745;
+    --garden-light: #5C7C67;
+    --cream: #F4EADA;
+    --smoke: #9C9186;
+    --hair: rgba(244,234,218,0.10);
+    --radius: 3px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    background:var(--charcoal);
+    color:var(--cream);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{background:var(--ember); color:var(--cream);}
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--brass);
+    display:inline-block;
+  }
+
+  /* ---------- SKEWER DIVIDER (signature motif) ---------- */
+  .skewer{
+    display:flex; align-items:center; gap:10px;
+    color:var(--ember);
+    opacity:0.85;
+  }
+  .skewer svg{width:34px; height:10px; flex-shrink:0;}
+  .skewer-line{flex:1; height:1px; background:linear-gradient(90deg, var(--hair), transparent);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(22,18,14,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--hair);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-size:1.15rem; font-weight:600;
+    color:var(--cream);
+  }
+  .brand svg{width:26px; height:26px; color:var(--ember-bright);}
+  .brand .sub{
+    font-family:'Space Mono', monospace;
+    font-size:0.6rem; letter-spacing:0.15em; color:var(--garden-light);
+    display:block; margin-top:2px; font-weight:400; text-transform:uppercase;
+  }
+  .navlinks{display:flex; align-items:center; gap:32px; font-size:0.88rem;}
+  .navlinks a{
+    color:var(--smoke); position:relative; padding:4px 0;
+    transition:color 0.25s ease;
+  }
+  .navlinks a:hover, .navlinks a:focus-visible{color:var(--cream);}
+  .navlinks a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:1px;
+    background:var(--ember-bright); transition:width 0.25s ease;
+  }
+  .navlinks a:hover::after{width:100%;}
+  .nav-cta{
+    font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.05em;
+    text-transform:uppercase; border:1px solid var(--brass); color:var(--brass-soft);
+    padding:9px 16px; border-radius:2px; transition:all 0.25s ease;
+  }
+  .nav-cta:hover{background:var(--brass); color:var(--charcoal);}
+  .navlinks-mobile{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; overflow:hidden;
+    min-height:92vh;
+    display:flex; align-items:center;
+    padding:80px 0 60px;
+  }
+  .ember-field{
+    position:absolute; inset:0; z-index:0; pointer-events:none;
+  }
+  .ember-field::before, .ember-field::after{
+    content:""; position:absolute; border-radius:50%;
+    filter:blur(90px);
+    opacity:0.35;
+  }
+  .ember-field::before{
+    width:520px; height:520px; background:var(--ember);
+    top:-120px; right:-100px;
+    animation:emberPulse 9s ease-in-out infinite;
+  }
+  .ember-field::after{
+    width:420px; height:420px; background:var(--garden);
+    bottom:-160px; left:-120px; opacity:0.28;
+    animation:emberPulse 11s ease-in-out infinite reverse;
+  }
+  @keyframes emberPulse{
+    0%,100%{opacity:0.25; transform:scale(1);}
+    50%{opacity:0.42; transform:scale(1.08);}
+  }
+  .grain{
+    position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .hero-inner{position:relative; z-index:2; width:100%;}
+  .hero-rating{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Space Mono', monospace; font-size:0.78rem; color:var(--smoke);
+    border:1px solid var(--hair); padding:8px 14px; border-radius:2px;
+    margin-bottom:28px;
+  }
+  .stars{color:var(--brass); letter-spacing:1px;}
+  .hero h1{
+    font-size:clamp(3.4rem, 9vw, 7.2rem);
+    line-height:0.92;
+    color:var(--cream);
+  }
+  .hero h1 em{
+    font-style:italic; font-weight:400; color:var(--ember-bright);
+    display:block;
+    font-size:0.55em;
+    margin-top:4px;
+  }
+  .hero-tag{
+    max-width:480px; margin-top:26px;
+    font-size:1.08rem; color:var(--smoke); font-weight:300;
+  }
+  .hero-actions{
+    display:flex; flex-wrap:wrap; gap:14px; margin-top:40px;
+  }
+  .btn{
+    font-family:'Space Mono', monospace; font-size:0.76rem; letter-spacing:0.06em;
+    text-transform:uppercase; padding:15px 26px; border-radius:2px;
+    display:inline-flex; align-items:center; gap:10px;
+    transition:all 0.25s ease; border:1px solid transparent;
+  }
+  .btn-primary{background:var(--ember); color:var(--cream);}
+  .btn-primary:hover{background:var(--ember-bright); transform:translateY(-2px);}
+  .btn-ghost{border-color:var(--hair); color:var(--cream);}
+  .btn-ghost:hover{border-color:var(--cream); transform:translateY(-2px);}
+  .hero-meta{
+    margin-top:56px; display:flex; gap:40px; flex-wrap:wrap;
+    font-family:'Space Mono', monospace; font-size:0.74rem; color:var(--smoke);
+  }
+  .hero-meta div span{display:block; color:var(--cream); font-size:0.9rem; margin-top:4px; font-family:'Work Sans', sans-serif;}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:110px 0;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:24px; margin-bottom:56px; flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(2.1rem, 4vw, 3rem); color:var(--cream); margin-top:14px;}
+  .section-head p{color:var(--smoke); max-width:380px; font-weight:300;}
+
+  .reveal{
+    opacity:0; transform:translateY(24px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- ABOUT ---------- */
+  .about{border-top:1px solid var(--hair); border-bottom:1px solid var(--hair); background:var(--charcoal-2);}
+  .about-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:70px; align-items:center;
+  }
+  .about-copy p{color:var(--smoke); font-weight:300; font-size:1.02rem; margin-top:20px; max-width:480px;}
+  .about-copy h2{font-size:clamp(1.9rem,3.4vw,2.6rem); margin-top:14px; color:var(--cream);}
+  .badges{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:32px;
+  }
+  .badge{
+    font-family:'Space Mono', monospace; font-size:0.68rem; letter-spacing:0.04em;
+    text-transform:uppercase; color:var(--garden-light);
+    border:1px solid rgba(92,124,103,0.4); padding:8px 12px; border-radius:2px;
+  }
+  .about-art{position:relative; aspect-ratio:1/1.05; display:flex; align-items:center; justify-content:center;}
+  .about-art svg{width:100%; height:100%;}
+
+  /* ---------- MENU ---------- */
+  .menu-tabs{
+    display:flex; gap:10px; overflow-x:auto; padding-bottom:16px; margin-bottom:20px;
+    scrollbar-width:thin;
+  }
+  .menu-tabs::-webkit-scrollbar{height:4px;}
+  .menu-tabs::-webkit-scrollbar-thumb{background:var(--charcoal-3);}
+  .tab{
+    flex:0 0 auto;
+    font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.04em;
+    text-transform:uppercase; color:var(--smoke);
+    background:var(--charcoal-2); border:1px solid var(--hair);
+    padding:11px 18px; border-radius:2px; cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  .tab:hover{color:var(--cream); border-color:var(--smoke);}
+  .tab.active{background:var(--ember); color:var(--cream); border-color:var(--ember);}
+
+  .menu-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:0;
+    border-top:1px solid var(--hair);
+  }
+  .menu-item{
+    display:none;
+    padding:26px 22px;
+    border-bottom:1px solid var(--hair);
+    transition:background 0.2s ease;
+  }
+  .menu-item:nth-child(odd){border-right:1px solid var(--hair);}
+  .menu-item.show{display:block; animation:fadeIn 0.4s ease;}
+  @keyframes fadeIn{from{opacity:0;} to{opacity:1;}}
+  .menu-item:hover{background:rgba(213,84,26,0.05);}
+  .mi-top{display:flex; justify-content:space-between; align-items:baseline; gap:14px;}
+  .mi-name{font-family:'Fraunces', serif; font-size:1.18rem; color:var(--cream); font-weight:500;}
+  .mi-price{
+    font-family:'Space Mono', monospace; font-size:0.92rem; color:var(--brass-soft);
+    white-space:nowrap;
+  }
+  .mi-desc{color:var(--smoke); font-size:0.9rem; font-weight:300; margin-top:8px; max-width:92%;}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews{background:var(--charcoal-2); border-top:1px solid var(--hair); border-bottom:1px solid var(--hair);}
+  .review-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+    background:var(--hair); border:1px solid var(--hair);
+  }
+  .review-card{
+    background:var(--charcoal-2); padding:32px 28px;
+  }
+  .review-stars{color:var(--brass); font-size:0.8rem; letter-spacing:2px; margin-bottom:16px;}
+  .review-quote{font-family:'Fraunces', serif; font-style:italic; font-size:1.05rem; color:var(--cream); font-weight:400; line-height:1.5;}
+  .review-who{
+    margin-top:20px; font-family:'Space Mono', monospace; font-size:0.7rem;
+    text-transform:uppercase; letter-spacing:0.04em; color:var(--smoke);
+  }
+  .review-summary{
+    display:flex; align-items:center; gap:28px; margin-bottom:48px; flex-wrap:wrap;
+  }
+  .rs-score{font-family:'Fraunces', serif; font-size:4.2rem; color:var(--cream); line-height:1;}
+  .rs-detail{font-family:'Space Mono', monospace; font-size:0.75rem; color:var(--smoke); line-height:1.8;}
+  .rs-detail .stars{font-size:1rem;}
+
+  /* ---------- VISIT ---------- */
+  .visit-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:70px;
+  }
+  .visit-list dt{
+    font-family:'Space Mono', monospace; font-size:0.68rem; text-transform:uppercase;
+    letter-spacing:0.1em; color:var(--brass); margin-bottom:6px; margin-top:28px;
+  }
+  .visit-list dt:first-child{margin-top:0;}
+  .visit-list dd{font-size:1.05rem; color:var(--cream); font-weight:300;}
+  .visit-list dd a{border-bottom:1px solid var(--hair); transition:border-color 0.2s ease;}
+  .visit-list dd a:hover{border-color:var(--ember-bright); color:var(--ember-bright);}
+  .map-card{
+    border:1px solid var(--hair); border-radius:3px; overflow:hidden;
+    background:var(--charcoal-2); display:flex; flex-direction:column;
+  }
+  .map-visual{
+    position:relative; aspect-ratio:16/11;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(213,84,26,0.18), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(244,234,218,0.03) 0 1px, transparent 1px 34px),
+      repeating-linear-gradient(90deg, rgba(244,234,218,0.03) 0 1px, transparent 1px 34px),
+      var(--charcoal-3);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .pin{display:flex; flex-direction:column; align-items:center; gap:8px;}
+  .pin svg{width:38px; height:38px; color:var(--ember-bright);}
+  .pin span{font-family:'Space Mono', monospace; font-size:0.68rem; color:var(--smoke); letter-spacing:0.05em;}
+  .map-footer{
+    padding:20px 22px; display:flex; justify-content:space-between; align-items:center;
+    border-top:1px solid var(--hair);
+  }
+  .map-footer .status{
+    font-family:'Space Mono', monospace; font-size:0.72rem; color:var(--garden-light);
+    display:flex; align-items:center; gap:8px;
+  }
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--garden-light); display:inline-block;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:50px 0; border-top:1px solid var(--hair);}
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+    font-family:'Space Mono', monospace; font-size:0.72rem; color:var(--smoke);
+  }
+  .footer-inner .brand{font-size:0.95rem;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .navlinks{display:none;}
+    .about-grid, .visit-grid{grid-template-columns:1fr; gap:44px;}
+    .about-art{order:-1; max-width:280px; margin:0 auto;}
+    .menu-grid{grid-template-columns:1fr;}
+    .menu-item:nth-child(odd){border-right:none;}
+    .review-grid{grid-template-columns:1fr;}
+    section{padding:72px 0;}
+    .hero{min-height:auto; padding:120px 0 60px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h14M15 8l4 4-4 4M6 6l1.5 6L6 18"/></svg>
+      <span>Kabab Ghar<span class="sub">Garden · Hyderabad</span></span>
+    </a>
+    <nav class="navlinks">
+      <a href="#menu">Menu</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="nav-cta" href="tel:+923332622938">Call to Reserve</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="ember-field" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-rating reveal in">
+        <span class="stars">★★★★☆</span>
+        <span>4.5 — 43 reviews · Qasimabad, Hyderabad</span>
+      </div>
+      <h1>Kabab Ghar<em>— Garden —</em></h1>
+      <p class="hero-tag">Charcoal-grilled tikka, slow simmered karahi and a menu that wanders from Sindhi to Szechuan — all served under open garden air. Newly opened, already the table everyone's talking about.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          View the Menu
+        </a>
+        <a href="https://www.foodpanda.pk" target="_blank" rel="noopener" class="btn btn-ghost">Order on foodpanda</a>
+        <a href="#visit" class="btn btn-ghost">Get Directions</a>
+      </div>
+      <div class="hero-meta">
+        <div>Price per person<span>Rs 1,000 – 2,000</span></div>
+        <div>Today<span>Opens 5:30 PM</span></div>
+        <div>Service<span>Dine-in · Takeout · Garden seating</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="wrap about-grid">
+      <div class="about-copy reveal">
+        <div class="eyebrow">The house</div>
+        <h2>Grilled over charcoal. Grown in a garden.</h2>
+        <p>Kabab Ghar Garden sits behind Sunny CNG on Main Wadhu Wah Road — a family-run dining room and open-air garden built around a charcoal grill. The kitchen runs wide: smoky Sindhi karahi and BBQ tikka on one end, Chinese wok dishes and continental steaks on the other, with a full drinks bar of mojitos, margaritas and iced coffee in between.</p>
+        <p>Every table is a family table. Come hungry, stay for the ambiance.</p>
+        <div class="badges">
+          <span class="badge">Family-friendly</span>
+          <span class="badge">Free street parking</span>
+          <span class="badge">Accepts reservations</span>
+          <span class="badge">Credit cards accepted</span>
+          <span class="badge">Outdoor seating</span>
+        </div>
+      </div>
+      <div class="about-art reveal">
+        <svg viewBox="0 0 320 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="160" cy="170" r="150" fill="var(--charcoal-3)"/>
+          <g stroke="var(--brass)" stroke-width="1.4" opacity="0.55">
+            <circle cx="160" cy="170" r="150"/>
+            <circle cx="160" cy="170" r="118"/>
+          </g>
+          <!-- skewer -->
+          <line x1="70" y1="120" x2="250" y2="220" stroke="var(--ember-bright)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="102" cy="139" r="16" fill="var(--ember)"/>
+          <circle cx="136" cy="158" r="14" fill="var(--garden-light)"/>
+          <circle cx="168" cy="176" r="16" fill="var(--brass-soft)"/>
+          <circle cx="202" cy="196" r="14" fill="var(--ember)"/>
+          <circle cx="234" cy="214" r="12" fill="var(--garden-light)"/>
+          <!-- flame accents -->
+          <path d="M60 250 q10 -30 -4 -40 q18 4 18 26 q10 -18 -2 -34 q20 8 16 34 q10 -14 2 -28 q14 10 8 30 q-4 14 -20 16 q-16 -2 -18 -4z" fill="var(--ember)" opacity="0.7"/>
+          <path d="M250 90 q8 -22 -3 -30 q13 3 13 19 q7 -13 -2 -25 q15 6 12 25 q7 -10 1 -21 q10 8 6 22 q-3 10 -14 12 q-12 -2 -13 -3z" fill="var(--ember-bright)" opacity="0.55"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">From the kitchen</div>
+          <h2>The Menu</h2>
+        </div>
+        <p>Fourteen boards, one grill. A curated pass through everything worth ordering — the full menu runs longer, this is where to start.</p>
+      </div>
+
+      <div class="skewer" style="margin-bottom:28px;">
+        <svg viewBox="0 0 40 10"><line x1="2" y1="5" x2="38" y2="5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="5" r="3" fill="currentColor"/><circle cx="20" cy="5" r="3" fill="currentColor"/><circle cx="30" cy="5" r="3" fill="currentColor"/></svg>
+        <span class="skewer-line"></span>
+      </div>
+
+      <div class="menu-tabs" id="menuTabs"></div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="wrap">
+      <div class="review-summary reveal">
+        <div class="rs-score">4.5</div>
+        <div class="rs-detail">
+          <div class="stars">★★★★☆</div>
+          43 Google reviews<br>Ambiance · Karahi · Cooperative staff
+        </div>
+      </div>
+      <div class="review-grid reveal">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"The ambiance is so aesthetic, food taste is awesome, service and everything is so satisfying. 10/10."</p>
+          <div class="review-who">Jawad Ali · 2 reviews</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"Handi was creamy and delicious, staff was so cooperative, good environment."</p>
+          <div class="review-who">Malik Imtiaz</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"Finally found a place where the karahi tastes just like homemade — fresh, flavourful, cooked perfectly."</p>
+          <div class="review-who">Abdiel Ghouri</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"The BBQ is full of authentic charcoal flavor — you can really tell they focus on quality."</p>
+          <div class="review-who">Marrk Shorts</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"Food is good and atmosphere is outstanding."</p>
+          <div class="review-who">Abdullah Mahar · Local Guide, 62 reviews</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">"Mint margarita was super refreshing — perfect with the meal."</p>
+          <div class="review-who">Siddiq Malik</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit">
+    <div class="wrap visit-grid">
+      <div class="reveal">
+        <div class="eyebrow">Find the table</div>
+        <h2 style="margin-top:14px; color:var(--cream); font-size:clamp(1.9rem,3.4vw,2.6rem);">Visit the Garden</h2>
+        <dl class="visit-list">
+          <dt>Address</dt>
+          <dd>Main Wadhu Wah Road, behind Sunny CNG, Qasimabad, Hyderabad, Pakistan</dd>
+          <dt>Hours</dt>
+          <dd>Opens daily at 5:30 PM</dd>
+          <dt>Phone</dt>
+          <dd><a href="tel:+923332622938">+92 333 2622938</a></dd>
+          <dt>Delivery</dt>
+          <dd><a href="https://www.foodpanda.pk" target="_blank" rel="noopener">Order on foodpanda</a></dd>
+          <dt>Price range</dt>
+          <dd>Rs 1,000 – 2,000 per person</dd>
+        </dl>
+      </div>
+      <div class="reveal">
+        <div class="map-card">
+          <div class="map-visual">
+            <div class="pin">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+              <span>C86Q+J6 · HYDERABAD</span>
+            </div>
+          </div>
+          <div class="map-footer">
+            <span class="status"><span class="dot"></span>Closed now · Opens 5:30 PM</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kabab+Ghar+Garden+Qasimabad+Hyderabad" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:8px 14px; font-size:0.65rem;">Directions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="brand">Kabab Ghar Garden</span>
+    <span>Qasimabad, Hyderabad · Dine-in · Takeout · Reservations by phone</span>
+  </div>
+</footer>
+
+<script>
+  // ---------- MENU DATA ----------
+  const menu = [
+    { cat: "Charcoal & BBQ", items: [
+      ["Chicken Tikka", "Marinated in flavorful spices, grilled to a tender, smoky finish.", 480],
+      ["Chicken Malai Boti", "Succulent chunks in a creamy, mild marinade, grilled until tender.", 990],
+      ["Chicken Green Tikka", "Marinated in a fresh green herb and spice paste for vibrant flavor.", 570],
+      ["Chicken Behari Boti", "Traditional Behari spice mix, tangy and robust off the grill.", 990],
+      ["Chicken Bar B.Q Shashlik", "Skewered chicken and vegetables, classic shashlik style.", 1100],
+      ["Beef Seekh Kabab", "Spiced minced beef on skewers, rich and savory.", 880],
+      ["Beef Behari Boti", "Beef marinated in traditional Behari spices, grilled tender.", 990],
+      ["Fish Tikka", "Fish from the charcoal grill, marinated and tender.", 1299],
+    ]},
+    { cat: "Karahi & Biryani", items: [
+      ["Chicken Seekh Karahi — Full", "Chicken seekh kababs simmered in a rich, smoky karahi gravy.", 2700],
+      ["Chicken Seekh Karahi — Half", "The same smoky karahi gravy, half portion.", 1350],
+      ["Royal Sindhi Handi Biryani", "Aromatic basmati layered with tender meat and Sindhi spices.", 1100],
+    ]},
+    { cat: "Burgers & Sandwiches", items: [
+      ["Zinger Burger", "Crispy chicken fillet, fresh lettuce, mayonnaise, toasted bun.", 610],
+      ["Beef King Burger", "A grand beef patty, crisp vegetables, special sauces.", 750],
+      ["Beef Smash Burger", "Thin beef patty smashed and seared for a caramelized crust.", 550],
+      ["Kabab Sub Burger", "A kabab patty with fresh ingredients in a sub-style bun.", 400],
+      ["Club Sandwich", "Toasted layers of chicken, fresh vegetables, creamy dressing.", 570],
+      ["Malai Club Sandwich", "Tender chicken in a luscious malai sauce, layered fresh.", 640],
+      ["Royal Club Sandwich", "Premium fillings, toasted bread, rich creamy dressing.", 590],
+    ]},
+    { cat: "Steaks & Continental", items: [
+      ["Black Pepper Steak", "Grilled beef topped with a rich black pepper sauce.", 1749],
+      ["Chimichurri Steak", "Juicy grilled steak with a fresh, herby chimichurri.", 1749],
+      ["Country Chicken Parmesan", "Crispy fillet layered with tomato sauce and melted parmesan.", 1599],
+      ["Jalapeno Chicken", "Grilled chicken loaded with cheesy jalapeno flavor.", 1499],
+      ["Mushroom Chicken", "Tender chicken in a creamy, savory mushroom sauce.", 1499],
+    ]},
+    { cat: "Chinese & Asian", items: [
+      ["Kung Pao Chicken", "Stir-fried chicken with crunchy peppers, spicy kung pao sauce.", 1299],
+      ["Szechuan Chicken", "Bold and spicy, tossed in Szechuan sauce.", 1299],
+      ["Oyster Beef Sauce", "Juicy beef in a rich oyster sauce with Asian seasoning.", 1399],
+      ["Honey Ginger Chicken", "Tender chicken glazed with honey and fresh ginger.", 1299],
+      ["Chicken Manchurian", "Crispy chicken tossed in a tangy, slightly sweet sauce.", 1099],
+      ["Chicken Chow Mein", "Stir-fried noodles, tender chicken, vegetables.", 999],
+      ["Hot & Sour Soup", "Spicy heat, tangy zest, loaded with fresh vegetables.", 319],
+    ]},
+    { cat: "Shawarma & Rolls", items: [
+      ["Chicken Shawarma", "Slow-roasted chicken in pita with garlic sauce.", 350],
+      ["Cheese Shawarma", "Classic shawarma with a generous layer of melted cheese.", 380],
+      ["Shawarma Platter", "Shawarma meat, fresh salad, pita bread, house dips.", 690],
+      ["Chicken Chatni Roll", "Chicken wrapped in a soft roll with tangy chutney.", 300],
+      ["Triple Dhamaka Roll", "Three flavorful fillings in one hearty roll.", 320],
+    ]},
+    { cat: "Loaded Bites & Fries", items: [
+      ["Loaded Pizza Fries", "Crispy fries smothered in pizza sauce, cheese, toppings.", 799],
+      ["Dynamite Chicken", "Crispy chicken bites in a creamy, spicy dynamite sauce.", 899],
+      ["Mozzarella Sticks", "Golden sticks loaded with gooey melted mozzarella.", 799],
+      ["Masala Fries", "Golden fries seasoned with an aromatic spice blend.", 300],
+      ["Nachos", "Crunchy tortilla chips, melted cheese, flavorful toppings.", 799],
+    ]},
+    { cat: "Pasta & Fish", items: [
+      ["Pesto Penne Pasta", "Penne coated in a creamy, flavorful basil pesto.", 1299],
+      ["Creamy Fettuccine Alfredo", "Alfredo fettuccine, your choice of chicken or beef.", 1299],
+      ["Fish & Chips", "Crispy battered fish, classic fries, tartar sauce.", 1399],
+      ["Salsa Fish", "Succulent fillet topped with fresh, tangy salsa.", 1399],
+    ]},
+    { cat: "Hot Beverages", items: [
+      ["Cappuccino", "Rich espresso, steamed milk, a delicate foam layer.", 449],
+      ["Caffe Latte", "Smooth, creamy espresso and steamed milk.", 449],
+      ["Spanish Latte", "Rich espresso with sweetened milk, warm and indulgent.", 549],
+      ["Hot Chocolate", "Rich, velvety cocoa — warm and soothing.", 599],
+    ]},
+    { cat: "Iced Coffee & Shakes", items: [
+      ["Iced Caramel Latte", "Espresso, caramel syrup, cold milk, served over ice.", 649],
+      ["Mocha Latte", "Deep chocolate and espresso, cold milk, over ice.", 649],
+      ["Oreo Shake", "Creamy shake swirled with crushed Oreo cookies.", 549],
+      ["Nutella Shake", "Smooth, rich shake generously blended with Nutella.", 549],
+      ["Strawberry Frappe", "Fruity, refreshing, blended smooth and sweet.", 649],
+    ]},
+    { cat: "Mojito, Margarita & Colada", items: [
+      ["Blue Mojito", "Visually striking, refreshing and citrusy.", 399],
+      ["Strawberry Mojito", "Classic mojito with fresh muddled strawberry.", 399],
+      ["Strawberry Margarita", "Sweet, ripe strawberries for a fruity refreshment.", 399],
+      ["Pina Colada", "Sweet pineapple and creamy coconut, smooth and cooling.", 499],
+    ]},
+    { cat: "Lemonade & Chilled", items: [
+      ["Mint Lemonade", "Fresh mint blended in for a cool, zesty taste.", 349],
+      ["Strawberry Lemonade", "Sweet, slightly tart fresh strawberry.", 349],
+      ["Fresh Lime", "Freshly squeezed lime, sugar, water — crisp and tart.", 249],
+      ["Green Tea", "A warm, soothing cup with gentle flavor.", 150],
+    ]},
+    { cat: "Bread & Sides", items: [
+      ["Garlic Naan", "Naan infused with minced garlic and fresh herbs.", 80],
+      ["Roghni Naan", "Soft naan brushed with butter, topped with sesame seeds.", 80],
+      ["Kachumar Salad", "Finely chopped cucumber, tomato, onion, herbs, tangy dressing.", 250],
+      ["Raita Green", "Cooling yogurt and fresh green herbs.", 170],
+    ]},
+    { cat: "Sweet Finish", items: [
+      ["Hazelnut Pancake", "A fluffy pancake with aromatic, nutty hazelnut flavor.", 549],
+    ]},
+  ];
+
+  const tabsEl = document.getElementById('menuTabs');
+  const gridEl = document.getElementById('menuGrid');
+
+  menu.forEach((group, gi) => {
+    const tab = document.createElement('button');
+    tab.className = 'tab' + (gi === 0 ? ' active' : '');
+    tab.textContent = group.cat;
+    tab.dataset.index = gi;
+    tab.addEventListener('click', () => setActive(gi));
+    tabsEl.appendChild(tab);
+
+    group.items.forEach(([name, desc, price]) => {
+      const item = document.createElement('div');
+      item.className = 'menu-item' + (gi === 0 ? ' show' : '');
+      item.dataset.group = gi;
+      item.innerHTML = `
+        <div class="mi-top">
+          <span class="mi-name">${name}</span>
+          <span class="mi-price">Rs ${price.toLocaleString()}</span>
+        </div>
+        <p class="mi-desc">${desc}</p>
+      `;
+      gridEl.appendChild(item);
+    });
+  });
+
+  function setActive(index){
+    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', +t.dataset.index === index));
+    document.querySelectorAll('.menu-item').forEach(it => it.classList.toggle('show', +it.dataset.group === index));
+  }
+
+  // ---------- SCROLL REVEAL ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
